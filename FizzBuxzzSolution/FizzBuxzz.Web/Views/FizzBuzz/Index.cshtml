@@ -1,0 +1,95 @@
+﻿
+@model FizzBuzz.Models.FizzData
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Fizz Buzz VERY Thin ASP.NET MVC C# Example</h2>
+
+
+<p>
+    1). Enter a lower number
+    <br />
+    <br />
+     2). Enter a higher number
+    <br />
+    <br />
+    
+    3). Enter a COMMA DELIMITTED set of objects (numbers or strings)
+    <br />
+    <br />
+
+    4). Click the "Submit Button" to send the values to the server
+    <br />
+    <br />
+
+
+    <b>NOTE: I have provided some default values to get you started.</b>
+
+    <br />
+    <br />
+
+    The business logic will be performed on each object / item in the collection. 
+    The server will return a Result Collection containing the individual collection object and a string representing the result state of divisibility that will be displayed to the user.
+
+</p>
+
+<p>
+    <b>
+        NOTE: This is only a demo and of course a production application would have much more core infrastructure to create a  best practices environment.
+
+    </b>
+
+</p>
+
+@using(Html.BeginForm("Index", "FizzBuzz"))
+{
+
+    @Html.DisplayNameFor(m => m.LowerNumber)
+    <br />
+    @Html.TextBoxFor(m => m.LowerNumber, new { id = "LowerNumber", name = "LowerNumber" })
+    <br />
+    <br />
+
+
+    @Html.DisplayNameFor(m => m.HigherNumber)
+    <br />
+    @Html.TextBoxFor(m => m.HigherNumber, new { id = "HigherNumber", name = "HigherNumber" })
+
+    <br />
+    <br />
+
+    @Html.DisplayNameFor(m => m.InputCollectionString)
+    <br />
+    @Html.TextAreaFor(m => m.InputCollectionString, new
+    {
+        id = "InputCollectionString",
+        name = "InputCollectionString",
+        style = "width:1400px"  
+    })
+
+
+    <br />
+    <br />
+
+    @*@Html.ActionLink("SUBMIT to SERVER", "Index", "FizzBuzz")*@
+
+    <input type="submit" value="Send to Server for Evaluation" />
+}
+
+
+
+
+
+
+<h4>Results</h4>
+
+
+<ul>
+    @foreach (string item in Model.OutputResults) { 
+
+        <li>@item</li>
+    }
+  
+</ul>
